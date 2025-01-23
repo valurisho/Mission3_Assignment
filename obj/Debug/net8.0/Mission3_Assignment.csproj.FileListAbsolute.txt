@@ -12,3 +12,4 @@
 /Users/valu.montoya/RiderProjects/Mission3_Assignment/obj/Debug/net8.0/Mission3_Assignment.pdb
 /Users/valu.montoya/RiderProjects/Mission3_Assignment/obj/Debug/net8.0/Mission3_Assignment.genruntimeconfig.cache
 /Users/valu.montoya/RiderProjects/Mission3_Assignment/obj/Debug/net8.0/ref/Mission3_Assignment.dll
+/Users/valu.montoya/RiderProjects/Mission3_Assignment/obj/Debug/net8.0/Mission3_Assignment.sourcelink.json

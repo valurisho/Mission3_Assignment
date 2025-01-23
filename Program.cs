@@ -79,7 +79,7 @@ public class Program
             Console.WriteLine("Enter Expiration Date (YYYY-MM-DD): ");
             if (!DateTime.TryParse(Console.ReadLine(), out expirationDate) || expirationDate < DateTime.Now)
             {
-                Console.WriteLine("Invalid date format. Please use YYYY-MM-DD.");
+                Console.WriteLine("Invalid date. Please use YYYY-MM-DD and enter a valid date.");
             }
             else
             {
@@ -89,35 +89,42 @@ public class Program
         
         FoodItem item = new FoodItem(foodName,foodCategory,foodQuantity,expirationDate); 
         inventory.Add(item);
-        Console.WriteLine("Item added successfully");
+        Console.WriteLine("Item was added successfully.");
 
     }
 
     static private void DeleteFoodItem()
     {
         PrintInventory();
-        Console.WriteLine("Enter name of item to delete: ");
-        string foodName = Console.ReadLine();
-        
-        //lambda expression
-        FoodItem itemToDelete = inventory.FirstOrDefault(item => item.Name.Equals(foodName, StringComparison.OrdinalIgnoreCase));
-        
-        //if it find an item with that name then it adds it to the variable itemtoDelelet, if not, it returns null
-        if (itemToDelete != null) //if it is not null then it deletes
+        if (inventory.Count == 0) //it doesn't have the length property, it has a count property
         {
-            inventory.Remove(itemToDelete);
-            Console.WriteLine(itemToDelete.Name + " was deleted");
+            return;
         }
         else
         {
-            Console.WriteLine($" {foodName} not found in the inventory.");
+            Console.WriteLine("Enter name of item to delete: ");
+            string foodName = Console.ReadLine();
+        
+            //lambda expression
+            FoodItem itemToDelete = inventory.FirstOrDefault(item => item.Name.Equals(foodName, StringComparison.OrdinalIgnoreCase));
+            //it just finds the first one that matches that name
+            //if it finds an item with that name then it adds it to the variable itemtoDelelete, if not, it returns null
+            if (itemToDelete != null) //if it is not null then it deletes
+            {
+                inventory.Remove(itemToDelete);
+                Console.WriteLine(itemToDelete.Name + " was deleted");
+            }
+            else
+            {
+                Console.WriteLine($"{foodName} not found in the inventory.");
+            }
         }
 
     }
 
     static void PrintInventory()
     {
-        if (inventory.Count == 0) //it doesn't have the lenght property, it has a count property
+        if (inventory.Count == 0) //it doesn't have the length property, it has a count property
         {
             Console.WriteLine("There are no items in the inventory.");
             return;
@@ -125,11 +132,10 @@ public class Program
         else
         {
             Console.WriteLine("\nThese are the items in the inventory:");
-            Console.WriteLine("  Name  | Category  | Quantity | Expiration Date");
             for (int i = 0; i < inventory.Count; i++) 
             {
                 FoodItem foodItem = inventory[i];
-                Console.WriteLine($"{foodItem.Name} | {foodItem.Category} |   {foodItem.Quantity}  | {foodItem.ExpirationDate:yyyy-MM-dd}");
+                Console.WriteLine($"\n {i+1}.Name: {foodItem.Name}\n Category: {foodItem.Category} \n Quantity: {foodItem.Quantity}\n Expiration Date: {foodItem.ExpirationDate:yyyy-MM-dd}");
             }
         }
         
