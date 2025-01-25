@@ -64,7 +64,6 @@ public class Program
             if (!int.TryParse(Console.ReadLine(), out foodQuantity) || foodQuantity <= 0) //If it can't parse it to an integer or it is negative
             {
                 Console.WriteLine("Please enter a valid quantity.");
-                return;
             }
             else
             {
